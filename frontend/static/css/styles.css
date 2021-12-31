@@ -1,0 +1,87 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Holtwood One SC';
+}
+
+.main__block{
+    color: black;
+    background-color: white;
+    
+    
+}
+
+.container{
+    color: inherit;
+/* text-align: center; */
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 50px 0px;
+
+/* background-image: url(../image/Container.jpg); */
+background-size: cover;
+    min-height:900px;
+    background-position: fixed;
+
+}
+
+.container__insider{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    height:auto;
+    display: flex;
+    flex-direction: column;
+    background-color:transparent;
+;
+}
+
+.container__title{
+font-size: 25px;
+padding:    40px;
+}
+
+.container__box{
+    padding: 10px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+    
+}
+
+.container__box input[type='text']
+{
+    height:40px;
+    width:300px;
+    font-size:12px;
+    outline: none;
+}
+
+.container__box button{
+    height:40px;
+    width: 150px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: black;
+    color: white;
+
+}
+
+.container__box button:hover{
+cursor: pointer;
+background-color: orangered;
+border: none;
+}
+
+.container__box__item{
+    margin: 20px;
+}
+
+.thisisbox{
+    height: 1000px;
+}
+

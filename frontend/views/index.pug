@@ -17,10 +17,33 @@ html(lang="en")
           div(class="container__title") Student Chat Bot
           div(class="container__box")
             form(action="/" method="post") 
-              div(class="container__box__item")
+              div(class="container__box__item" )
                 label Enter Your Query :
               div(class="container__box__item")
-                input(type="text" name="query")
+                input(type="text" name="query" required)
               div(class="container__box__item")
-                button Talk
+                button(onClick="myFunction();") Talk
+            div(styles="display:block;" id="ans")
+              |  #{answer}
+              br
+              |  #{msg}
+              br
+              |  #{data}
+              br
+              |  #{data1}
+              br
+              |  #{data2}
+              br
+              |  #{data3}
+              br
+              |  #{data4}
+              br
+              |  #{data5}
+              br
+              |  #{data6}
+              br
+              |  #{data7}
+              br
+              |  #{data8}
+    //- - if(answer==null) | Not Found
   script(src="js/app.js")

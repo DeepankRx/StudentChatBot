@@ -4,6 +4,10 @@ body{
     font-family: 'Holtwood One SC';
 }
 
+div input[type="text"]{
+    text-transform: uppercase;
+}
+
 .main__block{
     color: black;
     background-color: white;
@@ -17,11 +21,11 @@ body{
 display: flex;
 align-items: center;
 justify-content: center;
-margin: 50px 0px;
+margin: 0px 0px;
 
 /* background-image: url(../image/Container.jpg); */
 background-size: cover;
-    min-height:900px;
+    min-height:700px;
     background-position: fixed;
 
 }

@@ -1,0 +1,61 @@
+doctype html
+head
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  link(rel="stylesheet" href="css/styles.css")
+  link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh' crossorigin='anonymous')
+
+body
+  div
+
+    div(class="card-header text-center" style="text-align: center; font-size:50px; font-family: 'Holtwood One SC', serif;") Student Chat Bot
+      a(href="https://www.gehu.ac.in/" target="_blank")
+        img(src="image/Logo.png" style="height:75px;border-radius:50%;right:500px;position:relative;bottom:5px;")
+    .card-body
+      h5(class="card-title" style="text-align: center;") 
+      p(class="card-text" style="text-align: center;font-weight: bold;")
+      .card-body.height3
+      div
+        ul.chat-list
+          li.in
+            .chat-body
+              .chat-message 
+                | #{answer}     
+                br    
+                |  #{msg}     
+                br     
+                |  #{data}     
+                br     
+                |  #{data1}    
+                br   
+                |  #{data2}      
+                br      
+                |  #{data3}     
+                br    
+                |  #{data4}     
+                br     
+                |  #{data5}    
+                br   
+                |  #{data6}      
+                br      
+                |  #{data7}     
+                br    
+                |  #{data8}
+  button.open-button(onclick='openForm()') Chat
+  #myForm.chat-popup
+    form.form-container(action='/' method='post')
+      h3 Student Chat Bot
+      br
+      br
+      label(for='msg' style="font-size:20px;") 
+        b Query :
+      input(type="text" name="query" required)
+      
+      button.btn(type='submit' class="button1") Send
+      button.btn.cancel(type='button' onclick='closeForm()') Close
+  script.
+    function openForm() {
+    document.getElementById("myForm").style.display = "block";
+    }
+    function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+    }

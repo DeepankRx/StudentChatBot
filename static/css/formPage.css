@@ -1,0 +1,80 @@
+
+
+body {
+  background-image: url('https://media.istockphoto.com/photos/modern-keyboard-wih-blue-log-in-button-picture-id638149354?b=1&k=20&m=638149354&s=170667a&w=0&h=K_dd1EuWBMmyU0A5IN4igEUROFozhvtj7CtJ0GswHLE=');
+  padding: 0;
+  margin: 0px;
+  font-family: 'Lato', sans-serif;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 1;
+}
+
+#main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+div input[type="text"]{
+  text-transform: uppercase;
+}
+form {
+  background-color: rgba(60, 89, 107, 0.63);
+  width: 40%;
+  padding: 30px;
+}
+
+.username input,
+.password input {
+  width: 100%;
+  height: 40px;
+  border: 0px;
+  margin: 5px 5px 15px;
+  box-sizing: border-box;
+  padding: 15px 15px;
+}
+
+input:focus,
+button:focus {
+  outline: none;
+}
+
+button {
+  background: #63cdda;
+  color: #fff;
+  border: 0px;
+  width: 100%;
+  padding: 10px;
+  margin: 5px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.label {
+  font-size: 40px;
+  text-align: center;
+  color: #fff;
+  padding-bottom: 15px;
+  text-transform: capitalize;
+}
+
+@media(max-width:610px) {
+  form {
+    width: 60%;
+  }
+
+  button {
+    padding: 5px;
+  }
+}
+
+@media(max-width:420px) {
+  form {
+    width: 70%;
+  }
+
+  h3 {
+    margin: 10px;
+  }
+}

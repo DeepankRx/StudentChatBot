@@ -1,23 +1,16 @@
 //modules
-const TelegramBot = require('node-telegram-bot-api');
 const mongoose = require('mongoose');
 const express = require("express");
 const http = require('http');
-const bodyparser = require("body-parser");
 const path = require("path");
-//telegram api key
-const token = "5030251873:AAHdAZsdW4L8YFl_86GkWI9NNGx2Fl7farU";
-//verify token
-const bot = new TelegramBot(token, {
-    polling: true
-});
 //creating node app
 const app = express();
 //creating server
 const server = http.createServer(app);
 app.use(express.urlencoded(true))
 //connecting to mongoDb
-let URI = "mongodb://localhost:27017/botDb";
+let URI = "mongodb+srv://deepank:passwordforbot@cluster0.wopim.mongodb.net/ChatBot?retryWrites=true&w=majority";
+// let URI = "mongodb://localhost:27017/botDb";
 mongoose.connect(URI);
 app.use(express.urlencoded(true))
 //initializing static directory
@@ -71,13 +64,16 @@ const adminSchema = new mongoose.Schema({
     AdminName: String,
     Password: String,
 });
-
+const questionsAskedSchema = new mongoose.Schema({
+    query: String,
+})
 
 //models
 const studentId = mongoose.model('studentids', StudentIdSchema);
 const details = mongoose.model('details', detailschema);
 const questions = mongoose.model('questions', questionsSchema);
 const admin = mongoose.model('admin', adminSchema);
+const questionsAsked = mongoose.model('questionsAsked', questionsAskedSchema);
 //get method
 app.get('/', (req, res) => {
     res.render('index');
@@ -85,29 +81,43 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
     res.render('login');
 });
-
+app.get('/details', (req, res) => {
+    questionsAsked.find({}, (err, data) => {
+        if (err) {
+            console.log(err);
+        } else {
+            if(data){
+                var result = Object.entries(data);
+                console.log(result[1][1].query);
+            res.render('details', {
+                ques: result
+            });
+        }
+        }
+    })
+});
 
 //post method
 app.post('/addDetails', (req, res) => {
-
-
     var myData = new questions(req.body);
-
-
     myData.save().then(() => {
         res.status(200).render('addDetails');
     }).catch(() => {
         res.status(200).render('404');
     });
 });
+
 app.post('/', (req, res) => {
     let text = req.body.query;
+    var questionAsk = new questionsAsked(req.body);
+    questionAsk.save()
     console.log(text);
     studentId.findOne({
         StudentID: text
     }, function (err, data) {
         if (err) {
             console.log(err);
+         
         } else {
             if (data) {
                 let name = data.StudentName;
@@ -116,9 +126,8 @@ app.post('/', (req, res) => {
                     StudentName: name
                 }, function (err, data1) {
                     if (err) {
-                        // console.log(err);
-                        bot.sendMessage(chatId, "NOT FOUND");
                     } else {
+
                         console.log(data1);
                         res.render('index', {
                             data: data1.StudentName,
@@ -134,19 +143,12 @@ app.post('/', (req, res) => {
                     }
                 });
             }
-            //  else {
-                // console.log("Data:" +
-                //     data);
-                // res.render('index', {
-                //     msg: "NOT FOUND"
-                // });
-                // res.send("BYE");
-            // }
         }
     });
-
     questions.findOne({
-        Question:{$regex: text}
+        Question: {
+            $regex: text
+        }
     }, function (err, data) {
         if (err) {
             console.log(err);
@@ -161,18 +163,7 @@ app.post('/', (req, res) => {
                     answer: answer
                 });
 
-            } 
-            // else
-            // {
-            //     // res.send("HI");
-            // }
-            // else {
-            //     console.log("Data:" +
-            //         data);
-            //     res.render('index', {
-            //         msg: "NOT FOUND"
-            //     });
-            // }
+            }
         }
     });
 })

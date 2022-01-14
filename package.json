@@ -24,4 +24,8 @@
     "url": "https://github.com/DeepankRx/StudentChatBot/issues"
   },
   "homepage": "https://github.com/DeepankRx/StudentChatBot#readme"
+  ,
+  "engines": {
+    "node": "^8 || ^15"
+  }
 }

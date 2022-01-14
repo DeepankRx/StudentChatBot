@@ -1,16 +1,8 @@
 {
-  "name": "chat-bot",
+  "name": "bot",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {
-    "express": "^4.17.1",
-    "mongoose": "^6.1.1",
-    "nodemon": "^2.0.15",
-    "pug": "^3.0.2",
-    "start": "node index.js"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,8 +16,4 @@
     "url": "https://github.com/DeepankRx/StudentChatBot/issues"
   },
   "homepage": "https://github.com/DeepankRx/StudentChatBot#readme"
-  ,
-  "engines": {
-    "node": "^8 || ^15"
-  }
 }
